@@ -1,0 +1,40 @@
+$white: #f8fafc;
+$black: #020617;
+$blue: #1e3a8a;
+$gray: #ddd;
+$red: #dc2626;
+$green: #47dc26;
+$shadow-color: #0000002e;
+
+@mixin border($color: $gray) {
+  border: 5px solid $color;
+}
+
+$form-height: 50px;
+$border-radius: 8px;
+$padding: 24px;
+$btn-border-radius: 1000px;
+$btn-size: 70px;
+
+%todo-buttons {
+  @include border($gray);
+  border-radius: $btn-border-radius;
+  width: $btn-size;
+  height: $btn-size;
+  padding: 8px;
+  background-color: $white;
+  box-sizing: border-box;
+
+  transition: 0.3s border;
+}
+
+%todo-buttons-icons {
+  color: $gray;
+  fill: $gray;
+
+  opacity: 1;
+
+  transition:
+    0.3s border,
+    fill;
+}
