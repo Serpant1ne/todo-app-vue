@@ -1,7 +1,28 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+
+let helloWorld = ref('helloWorld')
+
+let id = 0
+
+let todoList = ref([
+  {
+    id: id++,
+    name: 'helloTask ' + id,
+    done: false
+  },
+  {
+    id: id++,
+    name: 'helloTask ' + id,
+    done: true
+  }
+])
+</script>
+
 <template lang="">
   <list class="list">
-    <li class="todo">
-      <span class="todoName">456</span>
+    <li v-for="todo in todoList" :key="todo.id" class="todo">
+      <span class="todoName">{{ todo.name }}</span>
       <div class="btnsWrapper">
         <button class="deleteBtn">
           <svg
@@ -22,7 +43,7 @@
     </li>
   </list>
 </template>
-<script setup lang="ts"></script>
+
 <style lang="scss">
 @use '../assets/main.scss';
 
