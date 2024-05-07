@@ -1,27 +1,31 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { onBeforeMount } from 'vue'
+import TodoForm from './components/TodoForm.vue'
+
+onBeforeMount(() => {
+  document.body.classList.add('body')
+})
 </script>
 
 <template>
-  <body>
-    <p>hello world</p>
-  </body>
+  <div class="wrapper">
+    <TodoForm />
+  </div>
 </template>
 
 <style scoped lang="scss">
-@import './assets/main.scss';
-* {
-  margin: 0;
-  padding: 0;
-}
-
+@use './assets/main';
 body {
-  background-color: $white;
+  background-color: main.$red;
   font-family: 'Poppins', sans-serif;
 }
 
+.wrapper {
+  margin: 2em auto;
+  width: 80%;
+}
+
 p {
-  color: $red;
+  color: main.$red;
 }
 </style>
