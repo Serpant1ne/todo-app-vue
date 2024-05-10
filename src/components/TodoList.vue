@@ -5,7 +5,7 @@ const todoListStore = useTodoListStore()
 </script>
 
 <template lang="">
-  <list class="list">
+  <ul class="list">
     <li v-for="todo in todoListStore.todoList" :key="todo.name" class="todo">
       <span class="todoName">{{ todo.name }}</span>
       <div class="btnsWrapper">
@@ -26,7 +26,7 @@ const todoListStore = useTodoListStore()
         <input v-model="todo.done" type="checkbox" name="todoCheckbox" class="todoCheckbox" />
       </div>
     </li>
-  </list>
+  </ul>
 </template>
 
 <style lang="scss">
@@ -36,6 +36,7 @@ const todoListStore = useTodoListStore()
   display: grid;
   gap: 12px;
   margin: 0 auto;
+  padding-inline-start: 0;
 }
 
 .todo {
