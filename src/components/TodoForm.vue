@@ -6,10 +6,10 @@ const todoListStore = useTodoListStore()
 const nameInput = ref('')
 
 function handleSubmit(): void {
-  console.log('submission')
   if (nameInput.value != '') {
     todoListStore.addTodo(nameInput.value.trim())
   }
+  nameInput.value = ''
 }
 </script>
 
