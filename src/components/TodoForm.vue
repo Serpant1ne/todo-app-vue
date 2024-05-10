@@ -1,10 +1,25 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+import { useTodoListStore } from '@/stores/todoListStore'
+
+const todoListStore = useTodoListStore()
+const nameInput = ref('')
+
+function handleSubmit(): void {
+  console.log('submission')
+  if (nameInput.value != '') {
+    todoListStore.addTodo(nameInput.value.trim())
+  }
+}
+</script>
+
 <template lang="">
-  <form class="form">
-    <input type="text" name="taskNameInput" id="taskNameInput" />
+  <form class="form" autocomplete="off" @submit.prevent="handleSubmit()">
+    <input type="text" name="taskNameInput" id="taskNameInput" v-model="nameInput" />
     <button type="submit" class="submitBtn">+</button>
   </form>
 </template>
-<script setup lang="ts"></script>
+
 <style lang="scss">
 @use '../assets/main.scss';
 
@@ -29,6 +44,8 @@
   font-weight: bold;
   margin-right: 24px;
   flex-grow: 1;
+
+  font-family: 'Poppins', sans-serif;
 
   &:focus-visible {
     outline: none;

@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { onBeforeMount } from 'vue'
+import { onBeforeMount, onMounted } from 'vue'
 import TodoForm from './components/TodoForm.vue'
 import TodoList from './components/TodoList.vue'
+import { useTodoListStore } from './stores/todoListStore'
 
 onBeforeMount(() => {
   document.body.classList.add('body')

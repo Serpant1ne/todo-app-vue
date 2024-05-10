@@ -1,30 +1,15 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { useTodoListStore } from '@/stores/todoListStore'
 
-let helloWorld = ref('helloWorld')
-
-let id = 0
-
-let todoList = ref([
-  {
-    id: id++,
-    name: 'helloTask ' + id,
-    done: false
-  },
-  {
-    id: id++,
-    name: 'helloTask ' + id,
-    done: true
-  }
-])
+const todoListStore = useTodoListStore()
 </script>
 
 <template lang="">
   <list class="list">
-    <li v-for="todo in todoList" :key="todo.id" class="todo">
+    <li v-for="todo in todoListStore.todoList" :key="todo.id" class="todo">
       <span class="todoName">{{ todo.name }}</span>
       <div class="btnsWrapper">
-        <button class="deleteBtn">
+        <button class="deleteBtn" @click="todoListStore.deleteTodo(todo)">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             x="0px"
@@ -38,7 +23,7 @@ let todoList = ref([
             ></path>
           </svg>
         </button>
-        <input type="checkbox" name="todoCheckbox" class="todoCheckbox" />
+        <input v-model="todo.done" type="checkbox" name="todoCheckbox" class="todoCheckbox" />
       </div>
     </li>
   </list>
