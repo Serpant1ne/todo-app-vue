@@ -2,12 +2,25 @@
 import { useTodoListStore } from '@/stores/todoListStore'
 
 const todoListStore = useTodoListStore()
+
+function translateFlag(flag: number): string | null {
+  if (flag === 1) {
+    return 'High'
+  } else if (flag === 2) {
+    return 'Medium'
+  } else if (flag === 3) {
+    return 'Low'
+  } else {
+    return null
+  }
+}
 </script>
 
 <template lang="">
   <ul class="list">
-    <li v-for="todo in todoListStore.todoList" :key="todo.name" class="todo">
+    <li v-for="todo in todoListStore.todoList" :key="todo.flag" class="todo">
       <span class="todoName">{{ todo.name }}</span>
+      <span v-if="translateFlag(todo.flag)">{{ translateFlag(todo.flag) }}</span>
       <div class="btnsWrapper">
         <button class="deleteBtn" @click="todoListStore.deleteTodo(todo)">
           <svg

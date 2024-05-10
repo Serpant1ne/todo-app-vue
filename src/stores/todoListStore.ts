@@ -4,15 +4,17 @@ import { defineStore } from 'pinia'
 type Todo = {
   name: string,
   done: boolean,
+  flag: number
 }
 
 export const useTodoListStore = defineStore('todoList', () => {
   const todoList: Ref<Todo[]> = ref([])
 
-  function addTodo(name: string): void {
+  function addTodo(name: string, flag: number): void {
     todoList.value.push({
       name: name,
-      done: false
+      done: false,
+      flag: flag
     })
   }
 
