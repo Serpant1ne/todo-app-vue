@@ -6,7 +6,7 @@ const todoListStore = useTodoListStore()
 
 <template lang="">
   <list class="list">
-    <li v-for="todo in todoListStore.todoList" :key="todo.id" class="todo">
+    <li v-for="todo in todoListStore.todoList" :key="todo.name" class="todo">
       <span class="todoName">{{ todo.name }}</span>
       <div class="btnsWrapper">
         <button class="deleteBtn" @click="todoListStore.deleteTodo(todo)">
@@ -50,7 +50,7 @@ const todoListStore = useTodoListStore()
   min-width: 30%;
 }
 
-.taskName {
+.todoName {
   white-space: nowrap;
   overflow: hidden; /* Hide overflowing content */
   text-overflow: ellipsis;

@@ -1,22 +1,84 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, type Ref } from 'vue'
 import { useTodoListStore } from '@/stores/todoListStore'
+
+type Flag = {
+  name: string
+  value: number
+  default?: boolean
+  selected: boolean
+}
 
 const todoListStore = useTodoListStore()
 const nameInput = ref('')
 
+const flags: Ref<Flag[]> = ref([
+  {
+    name: 'flag',
+    value: 5,
+    default: true,
+    selected: true
+  },
+  {
+    name: 'high',
+    value: 1,
+    selected: false
+  },
+  {
+    name: 'medium',
+    value: 2,
+    selected: false
+  },
+  {
+    name: 'low',
+    value: 3,
+    selected: false
+  },
+  {
+    name: 'none',
+    value: 4,
+    selected: false
+  }
+])
+
+const selected = ref(flags.value[2].value)
+
 function handleSubmit(): void {
+  console.log(selected.value)
   if (nameInput.value != '') {
     todoListStore.addTodo(nameInput.value.trim())
   }
   nameInput.value = ''
+  flags.value[1].selected = true
 }
 </script>
 
 <template lang="">
   <form class="form" autocomplete="off" @submit.prevent="handleSubmit()">
-    <input type="text" name="taskNameInput" id="taskNameInput" v-model="nameInput" />
-    <button type="submit" class="submitBtn">+</button>
+    <div class="main-elements">
+      <input
+        type="text"
+        name="todoNameInput"
+        id="todoNameInput"
+        placeholder="Type todo"
+        v-model="nameInput"
+      />
+      <button type="submit" class="submitBtn">+</button>
+    </div>
+    <div class="additional-elements">
+      <select name="flagSelect" id="flagSelect" class="flagSelect" v-model="selected">
+        <option
+          v-for="flag in flags"
+          :key="flag.name"
+          value="{{flag.value}}"
+          class="flagOption"
+          :disabled="flag.default"
+          :selected="flag.selected"
+        >
+          {{ flag.name }}
+        </option>
+      </select>
+    </div>
   </form>
 </template>
 
@@ -26,16 +88,21 @@ function handleSubmit(): void {
 .form {
   margin: 0 auto 24px auto;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   border-radius: main.$border-radius;
-  justify-content: space-between;
-  align-items: center;
   padding: main.$padding;
   box-shadow: 0px 12px 12px 12px main.$shadow-color;
   background-color: main.$white;
 }
 
-#taskNameInput {
+.main-elements {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#todoNameInput {
   min-width: 50%;
   max-width: 80%;
   border: none;
