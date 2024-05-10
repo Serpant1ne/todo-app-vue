@@ -6,7 +6,6 @@ type Flag = {
   name: string
   value: number
   default?: boolean
-  selected: boolean
 }
 
 const todoListStore = useTodoListStore()
@@ -15,9 +14,8 @@ const nameInput = ref('')
 const flags: Ref<Flag[]> = ref([
   {
     name: 'flag',
-    value: 5,
-    default: true,
-    selected: true
+    value: 4,
+    default: true
   },
   {
     name: 'high',
@@ -41,7 +39,7 @@ const flags: Ref<Flag[]> = ref([
   }
 ])
 
-const selected = ref(flags.value[2].value)
+const selected = ref(flags.value[0].value)
 
 function handleSubmit(): void {
   console.log(selected.value)
@@ -49,7 +47,7 @@ function handleSubmit(): void {
     todoListStore.addTodo(nameInput.value.trim())
   }
   nameInput.value = ''
-  flags.value[1].selected = true
+  selected.value = flags.value[0].value
 }
 </script>
 
@@ -70,7 +68,7 @@ function handleSubmit(): void {
         <option
           v-for="flag in flags"
           :key="flag.name"
-          value="{{flag.value}}"
+          :value="flag.value"
           class="flagOption"
           :disabled="flag.default"
           :selected="flag.selected"
