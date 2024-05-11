@@ -1,4 +1,4 @@
-import { ref, type Ref } from 'vue'
+import { computed, ref, type Ref } from 'vue'
 import { defineStore } from 'pinia'
 
 type Todo = {
@@ -9,6 +9,17 @@ type Todo = {
 
 export const useTodoListStore = defineStore('todoList', () => {
   const todoList: Ref<Todo[]> = ref([])
+
+  const sortType = ref('')
+
+  const sortedTodoList = computed(() => {
+    if (sortType.value === 'flag') {
+      return todoList.value.sort((a, b) => {
+        return a.flag - b.flag
+      })
+    }
+    return todoList.value
+  })
 
   function addTodo(name: string, flag: number): void {
     todoList.value.push({
@@ -24,5 +35,5 @@ export const useTodoListStore = defineStore('todoList', () => {
 
 
 
-  return { todoList, addTodo, deleteTodo }
+  return { todoList, sortedTodoList, addTodo, deleteTodo }
 }, { persist: true })

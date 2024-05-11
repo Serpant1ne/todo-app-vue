@@ -18,7 +18,7 @@ function translateFlag(flag: number): string | null {
 
 <template lang="">
   <ul class="list">
-    <li v-for="todo in todoListStore.todoList" :key="todo.flag" class="todo">
+    <li v-for="todo in todoListStore.sortedTodoList" :key="todo.flag" class="todo">
       <div class="todo-row">
         <span class="todoName">{{ todo.name }}</span>
         <div class="btnsWrapper">

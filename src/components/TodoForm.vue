@@ -13,27 +13,27 @@ const nameInput = ref('')
 
 const flags: Ref<Flag[]> = ref([
   {
-    name: 'flag',
+    name: 'Flag',
     value: 4,
     default: true
   },
   {
-    name: 'high',
+    name: 'High',
     value: 1,
     selected: false
   },
   {
-    name: 'medium',
+    name: 'Medium',
     value: 2,
     selected: false
   },
   {
-    name: 'low',
+    name: 'Low',
     value: 3,
     selected: false
   },
   {
-    name: 'none',
+    name: 'None',
     value: 4,
     selected: false
   }
@@ -72,6 +72,7 @@ function handleSubmit(): void {
           class="flagOption"
           :disabled="flag.default"
           :selected="flag.selected"
+          :class="'flagOption' + flag.name"
         >
           {{ flag.name }}
         </option>
@@ -98,6 +99,7 @@ function handleSubmit(): void {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 8px;
 }
 
 #todoNameInput {
@@ -129,5 +131,29 @@ function handleSubmit(): void {
   justify-content: center;
   display: flex;
   align-items: center;
+}
+
+.flagSelect {
+  // appearance: none;
+  border: 2px solid main.$blue;
+  border-radius: main.$border-radius;
+  background-color: transparent;
+  padding: 8px 10px;
+  margin: 0;
+  // width: 100px;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.flagOptionHigh {
+  color: main.$red;
+}
+
+.flagOptionMedium {
+  color: main.$yellow;
+}
+
+.flagOptionLow {
+  color: main.$blue;
 }
 </style>
