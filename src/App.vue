@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { onBeforeMount, onMounted } from 'vue'
+import { onBeforeMount } from 'vue'
 import TodoForm from './components/TodoForm.vue'
 import TodoList from './components/TodoList.vue'
-import { useTodoListStore } from './stores/todoListStore'
+import TodoListOptions from './components/TodoListOptions.vue'
 
 onBeforeMount(() => {
   document.body.classList.add('body')
@@ -12,6 +12,7 @@ onBeforeMount(() => {
 <template>
   <div class="wrapper">
     <TodoForm />
+    <TodoListOptions />
     <TodoList />
   </div>
 </template>
