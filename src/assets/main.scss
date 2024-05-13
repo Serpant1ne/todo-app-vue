@@ -40,3 +40,15 @@ $btn-size: 70px;
     0.3s border,
     fill;
 }
+
+%select {
+  // appearance: none;
+  border: 2px solid $blue;
+  border-radius: $border-radius;
+  background-color: transparent;
+  padding: 8px 10px;
+  margin: 0;
+  // width: 100px;
+  font-family: inherit;
+  font-size: inherit;
+}

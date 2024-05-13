@@ -5,9 +5,9 @@ const todoListStore = useTodoListStore()
 </script>
 
 <template>
-  <div class="optionsWrapper">
+  <div class="options-wrapper">
     <select name="sortSelect" id="sortSelect" class="sort-select" v-model="todoListStore.sortType">
-      <option value="">sort</option>
+      <option value="">Sort</option>
       <option value="flagDescending">By Flag (H > L)</option>
       <option value="flagAscending">By Flag (L > H)</option>
     </select>
@@ -16,4 +16,12 @@ const todoListStore = useTodoListStore()
 
 <style lang="scss">
 @use '../assets/main.scss';
+
+.options-wrapper {
+  margin-bottom: 12px;
+}
+
+.sort-select {
+  @extend %select;
+}
 </style>
