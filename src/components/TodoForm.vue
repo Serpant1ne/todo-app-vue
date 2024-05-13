@@ -56,14 +56,14 @@ function handleSubmit(): void {
       <input
         type="text"
         name="todoNameInput"
-        id="todoNameInput"
+        id="todo-name-input"
         placeholder="Type todo"
         v-model="nameInput"
       />
-      <button type="submit" class="submitBtn">+</button>
+      <button type="submit" class="submit-button">+</button>
     </div>
     <div class="additional-elements">
-      <select name="flagSelect" id="flagSelect" class="flagSelect" v-model="selected">
+      <select name="flag-select" id="flag-select" class="flag-select" v-model="selected">
         <option
           v-for="flag in flags"
           :key="flag.name"
@@ -71,7 +71,7 @@ function handleSubmit(): void {
           class="flagOption"
           :disabled="flag.default"
           :selected="flag.selected"
-          :class="'flagOption' + flag.name"
+          :class="'flag-option-' + flag.name.toLowerCase()"
         >
           {{ flag.name }}
         </option>
@@ -101,7 +101,7 @@ function handleSubmit(): void {
   margin-bottom: 8px;
 }
 
-#todoNameInput {
+#todo-name-input {
   min-width: 50%;
   max-width: 80%;
   border: none;
@@ -118,7 +118,7 @@ function handleSubmit(): void {
   }
 }
 
-.submitBtn {
+.submit-button {
   border-radius: main.$btn-border-radius;
   border: none;
   height: main.$btn-size;
@@ -132,7 +132,7 @@ function handleSubmit(): void {
   align-items: center;
 }
 
-.flagSelect {
+.flag-select {
   // appearance: none;
   border: 2px solid main.$blue;
   border-radius: main.$border-radius;
@@ -144,15 +144,15 @@ function handleSubmit(): void {
   font-size: inherit;
 }
 
-.flagOptionHigh {
+.flag-option-high {
   color: main.$red;
 }
 
-.flagOptionMedium {
+.flag-option-medium {
   color: main.$yellow;
 }
 
-.flagOptionLow {
+.flag-option-low {
   color: main.$blue;
 }
 </style>
