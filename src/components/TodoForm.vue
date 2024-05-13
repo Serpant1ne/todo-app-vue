@@ -41,6 +41,7 @@ const flags: Ref<Flag[]> = ref([
 
 const selected = ref(flags.value[0].value)
 
+// function on form submit
 function handleSubmit(): void {
   if (nameInput.value != '') {
     todoListStore.addTodo(nameInput.value.trim(), selected.value)

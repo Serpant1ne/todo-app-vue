@@ -1,12 +1,7 @@
 <script setup lang="ts">
-import { onBeforeMount } from 'vue'
 import TodoForm from './components/TodoForm.vue'
 import TodoList from './components/TodoList.vue'
 import TodoListOptions from './components/TodoListOptions.vue'
-
-onBeforeMount(() => {
-  document.body.classList.add('body')
-})
 </script>
 
 <template>

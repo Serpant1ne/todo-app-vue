@@ -3,6 +3,7 @@ import { useTodoListStore } from '@/stores/todoListStore'
 
 const todoListStore = useTodoListStore()
 
+// returns string value of priority flag
 function translateFlag(flag: number): string | null {
   if (flag === 1) {
     return 'High'

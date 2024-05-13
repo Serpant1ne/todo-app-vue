@@ -12,6 +12,7 @@ export const useTodoListStore = defineStore('todoList', () => {
 
   const sortType = ref('')
 
+  // list that renders in the list, return depends on sorting type from todoListOptions
   const sortedTodoList = computed(() => {
     if (sortType.value === 'flagDescending') {
       const sorted = todoList.value.slice()
